@@ -90,7 +90,8 @@ class Swiper extends Component {
   getCardStyle = () => {
     const { height, width } = Dimensions.get('window')
     const {
-      cardVerticalMargin,
+      cardTopMargin,
+      cardBottomMargin,
       cardHorizontalMargin,
       marginTop,
       marginBottom
@@ -98,10 +99,10 @@ class Swiper extends Component {
 
     const cardWidth = width - cardHorizontalMargin * 2
     const cardHeight =
-      height - cardVerticalMargin * 2 - marginTop - marginBottom
+      height - cardTopMargin - cardBottomMargin - marginTop - marginBottom
 
     return {
-      top: cardVerticalMargin,
+      top: cardTopMargin,
       left: cardHorizontalMargin,
       width: cardWidth,
       height: cardHeight
@@ -849,7 +850,8 @@ Swiper.propTypes = {
   cardHorizontalMargin: PropTypes.number,
   cardIndex: PropTypes.number,
   cardStyle: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
-  cardVerticalMargin: PropTypes.number,
+  cardTopMargin: PropTypes.number,
+  cardBottomMargin: PropTypes.number,
   cards: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   containerStyle: PropTypes.object,
   children: PropTypes.any,
@@ -925,7 +927,8 @@ Swiper.defaultProps = {
   cardHorizontalMargin: 20,
   cardIndex: 0,
   cardStyle: {},
-  cardVerticalMargin: 60,
+  cardTopMargin: 60,
+  cardBottomMargin: 60,
   childrenOnTop: false,
   containerStyle: {},
   disableBottomSwipe: false,

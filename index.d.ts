@@ -9,7 +9,8 @@ declare module 'react-native-deck-swiper' {
     cardIndex?: number;
     cards: T[];
     cardStyle?: number | object;
-    cardVerticalMargin?: number;
+    cardTopMargin?: number;
+    cardBottomMargin?: number;
     childrenOnTop?: boolean;
     containerStyle?: object;
     disableBottomSwipe?: boolean;

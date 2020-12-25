@@ -57,7 +57,8 @@ export default class Exemple extends Component {
           onTapCard={this.swipeLeft}
           cards={this.state.cards}
           cardIndex={this.state.cardIndex}
-          cardVerticalMargin={80}
+          cardTopMargin={80}
+          cardBottomMargin={80}
           renderCard={this.renderCard}
           onSwipedAll={this.onSwipedAllCards}
           stackSize={3}
