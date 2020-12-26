@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { PanResponder, Text, View, Dimensions, Animated } from 'react-native'
+import { PanResponder, Text, View, Dimensions } from 'react-native'
+import Animated from 'react-native-reanimated'
 import PropTypes from 'prop-types'
 import isEqual from 'lodash/isEqual'
 
@@ -195,7 +196,7 @@ class Swiper extends Component {
       })
     }
 
-    return Animated.event([null, this.createAnimatedEvent()], { useNativeDriver: false })(
+    return Animated.event([null, this.createAnimatedEvent()])(
       event,
       gestureState
     )
@@ -344,8 +345,7 @@ class Swiper extends Component {
     Animated.spring(this.state.pan, {
       toValue: 0,
       friction: this.props.topCardResetAnimationFriction,
-      tension: this.props.topCardResetAnimationTension,
-      useNativeDriver: true
+      tension: this.props.topCardResetAnimationTension
     }).start(cb)
 
     this.state.pan.setOffset({
@@ -417,8 +417,7 @@ class Swiper extends Component {
         x: x * SWIPE_MULTIPLY_FACTOR,
         y: y * SWIPE_MULTIPLY_FACTOR
       },
-      duration: this.props.swipeAnimationDuration,
-      useNativeDriver: true
+      duration: this.props.swipeAnimationDuration
     }).start(() => {
       this.setSwipeBackCardXY(x, y, () => {
         mustDecrementCardIndex = mustDecrementCardIndex
@@ -449,14 +448,12 @@ class Swiper extends Component {
       Animated.spring(this.state.previousCardX, {
         toValue: 0,
         friction: this.props.stackAnimationFriction,
-        tension: this.props.stackAnimationTension,
-        useNativeDriver: true
+        tension: this.props.stackAnimationTension
       }),
       Animated.spring(this.state.previousCardY, {
         toValue: 0,
         friction: this.props.stackAnimationFriction,
-        tension: this.props.stackAnimationTension,
-        useNativeDriver: true
+        tension: this.props.stackAnimationTension
       })
     ]).start(() => {
       this.setState({isSwipingBack: false})
@@ -477,14 +474,12 @@ class Swiper extends Component {
           Animated.spring(this.state[`stackPosition${stackSize}`], {
             toValue: newSeparation,
             friction: this.props.stackAnimationFriction,
-            tension: this.props.stackAnimationTension,
-            useNativeDriver: true
+            tension: this.props.stackAnimationTension
           }),
           Animated.spring(this.state[`stackScale${stackSize}`], {
             toValue: newScale,
             friction: this.props.stackAnimationFriction,
-            tension: this.props.stackAnimationTension,
-            useNativeDriver: true
+            tension: this.props.stackAnimationTension
           })
         ]).start()
       }
